@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//Very simple and earliy screenshot system.
 	if (Input.GetButton ("Screenshot")) {
 			Application.CaptureScreenshot("img.png");
 				}

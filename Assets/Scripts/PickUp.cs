@@ -3,16 +3,11 @@ using System.Collections;
 
 public class PickUp : MonoBehaviour {
 	public GameObject Player;
+
 	private bool PickedUp;
-
-	// Use this for initialization
-	void Start () {
-
-	}
-	
 	private bool Found;
 
-
+	//This is a function to see if the player hit box is within range of the objects hitbox.
 	void InRange() {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 2);
 		foreach (Collider I in hitColliders) {
@@ -27,10 +22,11 @@ public class PickUp : MonoBehaviour {
 		if (Found != true) {
 						InRange ();
 				}
+		//If the velocity is not constantly set to 0, the object will have a tendacy to float away.
 		if (PickedUp) {
 			this.rigidbody.velocity=Vector3.zero;
 				}
-		//hitColliders = Physics.OverlapSphere(this.transform.position, 5);
+		//This code here lets you pick up the object, it parents it to the player and then disables the gravity.
 		if (PickedUp&Input.GetButton ("Fire1")) {
 			Physics.IgnoreCollision(this.collider,Player.collider,false);
 			this.transform.parent=null;

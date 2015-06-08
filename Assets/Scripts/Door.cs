@@ -10,20 +10,22 @@ public class Door : MonoBehaviour {
 	public bool AutoClose;
 
 	private Vector3 CurrentPos;
+
+	//Open function, call this to open the door.
 	public void Open() {
 				if (Pressed != true) {
-			this.audio.Play ();
+						this.audio.Play ();
 						Pressed = true;
 						MovingDown = true;
 						CurrentPos = this.transform.position;
 				}
 		}
-
+	//Close function, call this to close the door.
 	public void Close() {
 		MovingUp = true;
 		this.audio.Play ();
 		}
-	// Update is called once per frame
+	//All the movement happens here
 	void Update () {
 	if (MovingDown) {
 			this.transform.position=Vector3.MoveTowards(this.transform.position, CurrentPos-Direction,Time.deltaTime*Speed);
