@@ -3,7 +3,7 @@
 # =============== #
 Temp/
 Library/
-.meta
+*.meta
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
