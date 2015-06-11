@@ -6,22 +6,25 @@ public class Menu : MonoBehaviour {
 	float MouseSens=0F;
 	// Use this for initialization
 	void Start () {
-		string[] File = System.IO.File.ReadAllLines("settings.cfg");
-		if (System.IO.File.Exists("settings.cfg")) {
-			foreach (string I in File) {
-				string[] Values=I.Split('=');
+				string[] File = System.IO.File.ReadAllLines ("settings.cfg");
+				if (System.IO.File.Exists ("settings.cfg")) {
+						foreach (string I in File) {
+								string[] Values = I.Split ('=');
 				
-				if (Values[0]=="FOV") {
-					FOV=float.Parse(Values[1]);
-				}
-				if (Values[0]=="MouseSens") {
-					MouseSens=float.Parse(Values[1]);
-				}
-			}
+								if (Values [0] == "FOV") {
+										FOV = float.Parse (Values [1]);
+								}
+								if (Values [0] == "MouseSens") {
+										MouseSens = float.Parse (Values [1]);
+								}
+						}
 
 
+				} else {
+
+						System.IO.File.WriteAllText ("settings.cfg", "FOV=" + "60" + "\nMouseSens=" + 15);
+				}
 		}
-	}
 
 	private bool Main=true;
 	void Settings() {
