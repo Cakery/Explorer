@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour {
 	private bool PickedUp;
 	private bool Found;
 
+//	private bool CoolingDown;
 	//This is a function to see if the player hit box is within range of the objects hitbox.
 	void InRange() {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 2);
@@ -35,16 +36,24 @@ public class PickUp : MonoBehaviour {
 			PickedUp=false;
 			Found=false;
 			Debug.Log("Dropped Object, state="+PickedUp);
-			
+			this.audio.Play();
 		}
 		else if (Input.GetButton ("Fire1") & Found) {
+//			CoolingDown=true;
 			this.transform.parent=Player.transform;
 			this.rigidbody.useGravity=false;
 			Physics.IgnoreCollision(this.collider,Player.collider);
 			PickedUp=true;
 			Debug.Log ("Picked up Object, state="+PickedUp);
+			this.audio.Play();
 	}
 
+		if (Vector3.Distance (this.transform.position, Player.transform.position) > 4&PickedUp) {
+			PickedUp=false;
+			this.transform.parent=null;
+			this.rigidbody.useGravity=true;
+			this.audio.Play();
+				}
 }
 }
 
