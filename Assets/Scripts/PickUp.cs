@@ -12,7 +12,7 @@ public class PickUp : MonoBehaviour {
 	void InRange() {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 2);
 		foreach (Collider I in hitColliders) {
-			if (I==Player.collider) {
+			if (I==Player.GetComponent<Collider>()) {
 				Found=true;
 			}
 				}
@@ -25,34 +25,34 @@ public class PickUp : MonoBehaviour {
 				}
 		//If the velocity is not constantly set to 0, the object will have a tendacy to float away.
 		if (PickedUp) {
-			this.rigidbody.velocity=Vector3.zero;
+			this.GetComponent<Rigidbody>().velocity=Vector3.zero;
 				}
 		//This code here lets you pick up the object, it parents it to the player and then disables the gravity.
 		if (PickedUp&Input.GetButton ("Fire1")) {
-			Physics.IgnoreCollision(this.collider,Player.collider,false);
+			Physics.IgnoreCollision(this.GetComponent<Collider>(),Player.GetComponent<Collider>(),false);
 			this.transform.parent=null;
-			this.rigidbody.useGravity=true;
+			this.GetComponent<Rigidbody>().useGravity=true;
 
 			PickedUp=false;
 			Found=false;
 			Debug.Log("Dropped Object, state="+PickedUp);
-			this.audio.Play();
+			this.GetComponent<AudioSource>().Play();
 		}
 		else if (Input.GetButton ("Fire1") & Found) {
 //			CoolingDown=true;
 			this.transform.parent=Player.transform;
-			this.rigidbody.useGravity=false;
-			Physics.IgnoreCollision(this.collider,Player.collider);
+			this.GetComponent<Rigidbody>().useGravity=false;
+			Physics.IgnoreCollision(this.GetComponent<Collider>(),Player.GetComponent<Collider>());
 			PickedUp=true;
 			Debug.Log ("Picked up Object, state="+PickedUp);
-			this.audio.Play();
+			this.GetComponent<AudioSource>().Play();
 	}
 
 		if (Vector3.Distance (this.transform.position, Player.transform.position) > 4&PickedUp) {
 			PickedUp=false;
 			this.transform.parent=null;
-			this.rigidbody.useGravity=true;
-			this.audio.Play();
+			this.GetComponent<Rigidbody>().useGravity=true;
+			this.GetComponent<AudioSource>().Play();
 				}
 }
 }

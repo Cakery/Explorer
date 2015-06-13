@@ -18,13 +18,13 @@ public class FlashLight : MonoBehaviour {
 			if (this.GetComponent<Light>().enabled) {
 			this.GetComponent<Light>().enabled=false;
 				CoolDown=true;
-				this.audio.Play();
+				this.GetComponent<AudioSource>().Play();
 				StartCoroutine(Cooling());
 
 			
 	} else {
 				this.GetComponent<Light>().enabled=true;
-				this.audio.Play();
+				this.GetComponent<AudioSource>().Play();
 				CoolDown=true;
 				StartCoroutine(Cooling());
 }

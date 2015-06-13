@@ -14,7 +14,7 @@ public class Door : MonoBehaviour {
 	//Open function, call this to open the door.
 	public void Open() {
 				if (Pressed != true) {
-						this.audio.Play ();
+						this.GetComponent<AudioSource>().Play ();
 						Pressed = true;
 						MovingDown = true;
 						CurrentPos = this.transform.position;
@@ -23,7 +23,7 @@ public class Door : MonoBehaviour {
 	//Close function, call this to close the door.
 	public void Close() {
 		MovingUp = true;
-		this.audio.Play ();
+		this.GetComponent<AudioSource>().Play ();
 		}
 	//All the movement happens here
 	void Update () {

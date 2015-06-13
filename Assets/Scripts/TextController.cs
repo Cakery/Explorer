@@ -8,9 +8,9 @@ public class TextController : MonoBehaviour {
 	bool FadedOut;
 	// Use this for initialization
 	void Start () {
-		Alpha= guiText.material.color;
+		Alpha= GetComponent<GUIText>().material.color;
 		Alpha.a = 0.0F;
-		guiText.material.color = Alpha;
+		GetComponent<GUIText>().material.color = Alpha;
 
 		//StartCoroutine (FadeIn ());
 	}
@@ -19,7 +19,7 @@ public class TextController : MonoBehaviour {
 		while (Alpha.a<1) {
 			//print(Alpha.a);
 			Alpha.a+=0.01F*Time.deltaTime*1.1F;
-			guiText.material.color = Alpha;
+			GetComponent<GUIText>().material.color = Alpha;
 			yield return new WaitForSeconds(0.1F);
 		}
 		FadedIn = true;
@@ -30,7 +30,7 @@ public class TextController : MonoBehaviour {
 		while (Alpha.a>0) {
 
 			Alpha.a-=0.01F*Time.deltaTime*1.1F;
-			guiText.material.color = Alpha;
+			GetComponent<GUIText>().material.color = Alpha;
 			//print(Alpha.a);
 			yield return new WaitForSeconds(0.1F);
 

@@ -19,7 +19,7 @@ public class Button : MonoBehaviour {
 			//If the door object is null, it will throw an error.			
 			if (door != null) {
 				Debug.Log("Pressed Button");	
-				this.audio.Play();
+				this.GetComponent<AudioSource>().Play();
 								door.Open ();
 				if (door.AutoClose) {
 					StartCoroutine(Close());

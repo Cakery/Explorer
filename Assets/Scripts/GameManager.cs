@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Game setup
-		Screen.showCursor = false;
+		Cursor.visible = false;
 
 		//Load CFG and apply values
  string[] File=System.IO.File.ReadAllLines ("settings.cfg");

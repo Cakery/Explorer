@@ -15,7 +15,7 @@ public class PressurePlate : MonoBehaviour {
 	void InRange() {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 2);
 		foreach (Collider I in hitColliders) {
-			if (I==Object.collider) {
+			if (I==Object.GetComponent<Collider>()) {
 				Found=true;
 			}
 		}

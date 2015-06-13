@@ -5,9 +5,9 @@ public class AudioTrigger : MonoBehaviour {
 	public bool PlayOnce;
 
 	void OnTriggerEnter() {
-		if (!this.audio.isPlaying) {
+		if (!this.GetComponent<AudioSource>().isPlaying) {
 						if (!PlayOnce) {
-								this.audio.Play ();
+								this.GetComponent<AudioSource>().Play ();
 								
 						}
 				}

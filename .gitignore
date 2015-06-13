@@ -4,7 +4,9 @@
 Temp/
 Library/
 *.meta
-
+Assets/Standard Assets/utility/*
+Assets/Standard Assets/physicsmaterials/*
+Assets/Standard Assets/crossplatforminput/*
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
