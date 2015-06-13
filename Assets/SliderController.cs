@@ -8,6 +8,31 @@ public class SliderController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Slider = GetComponent<Slider>();
+
+
+		if (System.IO.File.Exists ("settings.cfg")) {
+			string[] File = System.IO.File.ReadAllLines ("settings.cfg");
+			float FOV=0;
+			float MouseSens=0;
+						foreach (string I in File) {
+								string[] Values = I.Split ('=');
+				
+								if (Values [0] == "FOV") {
+										FOV = float.Parse (Values [1]);
+								}
+								if (Values [0] == "MouseSens") {
+										MouseSens = float.Parse (Values [1]);
+								}
+						}
+			if (this.name=="FOV") {
+			Slider.value = FOV;	
+			} else {
+				Slider.value=MouseSens;
+			}
+		}
+
+
+
 	}
 	public void TextChangeValue() {
 				float Num = float.Parse (Text.text);
